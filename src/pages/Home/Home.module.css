@@ -1,0 +1,32 @@
+.home {
+    padding-top: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    main {
+        width: 100%;
+    }
+}
+
+.inputPLaceholder {
+    display: flex;
+    flex-direction: column;
+    max-width: 624px;
+    width: 100%;
+    gap: 13px;
+    margin-bottom: 67px;
+}
+
+.count {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.countLayout {
+    width: 100%;
+    padding-left: 39px;
+}

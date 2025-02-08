@@ -1,0 +1,1 @@
+export { rickAndMortiApi } from "./api"

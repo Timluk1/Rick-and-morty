@@ -1,20 +1,24 @@
+import styles from "./Input.module.css"
+
 interface IInputProps {
     value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (newValue: string) => void;
     placeholder?: string;
 }
 
 export const Input: React.FC<IInputProps> = ({
-    value,
+    value,  
     onChange,
     placeholder,
 }) => {
     return (
         <input
+            className={styles.input}
             type="text"
             value={value}
-            onChange={onChange}
+            onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
         ></input>
     );
 };
+    

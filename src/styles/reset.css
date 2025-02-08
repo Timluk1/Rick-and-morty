@@ -106,3 +106,7 @@ th,
 td {
     border-collapse: collapse;
 }
+
+a {
+    color: inherit
+}
