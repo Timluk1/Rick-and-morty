@@ -6,26 +6,35 @@ import styles from "./Home.module.css";
 
 export const Home = () => {
     const [inputValue, setInputValue] = useState<string>("");
-    const [cards, setCards] = useState();
+    const [cards, setCards] = useState<any[]>([]); 
     const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+    const [isEmpty, setIsEmpty] = useState<boolean>(false);
+    const [foundCount, setFoundCount] = useState<number>(0);
 
     useEffect(() => {
         const getData = async () => {
+            if (inputValue.length <= 3) {
+                setCards([]);
+                setFoundCount(0);
+                return;
+            };
+
             try {
+                setIsEmpty(false);
                 setLoading(true);
                 const data = await rickAndMortiApi.getByName(inputValue);
+                setCards(data.results || []);
+                setFoundCount(data.info.count || 0); 
                 setLoading(false);
-                setCards(data);
             } catch  {
-                setError("Error");
+                setIsEmpty(true);
+                setLoading(false);
             }
         }
-        
-        if (inputValue.length > 3) {
-            getData();
-        }
-    }, [inputValue])
+
+        getData(); 
+
+    }, [inputValue]);
 
     return (
         <div className={styles.home}>
@@ -36,11 +45,14 @@ export const Home = () => {
                     onChange={(newValue) => setInputValue(newValue)}
                 />
                 <div className={styles.countLayout}>
-                    <span className={styles.count}>Found characters: 8</span>
+                    <span className={styles.count}>Found characters: {foundCount}</span>
                 </div>
             </div>
             <main>
-                <Cards />
+                {isEmpty
+                    ? <p className={styles.nothing}>Ничего не найдено</p>
+                    : <Cards cards={cards} isLoading={loading} />
+                }
             </main>
         </div>
     )
