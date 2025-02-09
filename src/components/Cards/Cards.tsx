@@ -51,7 +51,10 @@ export const Cards: React.FC<ICardsProps> = ({ cards, isLoading }) => {
                     <Card
                         key={card.name}
                         {...card}
-                        className={`${styles.cardListItem} ${card.isAlive ? styles.cardListItem1 : styles.cardListItem2
+                        className={`${styles.cardListItem} ${
+                            card.isAlive
+                                ? styles.cardListItem1
+                                : styles.cardListItem2
                         }`}
                     />
                 ))}

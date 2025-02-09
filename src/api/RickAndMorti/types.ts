@@ -1,3 +1,1 @@
-interface ICharter {
-
-}
+interface ICharter {}

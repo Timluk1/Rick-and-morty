@@ -4,7 +4,8 @@ import { useCards } from "hooks/useCard";
 import styles from "./Home.module.css";
 
 export const Home = () => {
-    const { cards, loading, isEmpty, foundCount, setInputValue, inputValue } = useCards();
+    const { cards, loading, isEmpty, foundCount, setInputValue, inputValue } =
+        useCards();
     return (
         <div className={styles.home}>
             <div className={styles.inputPLaceholder}>
@@ -14,14 +15,17 @@ export const Home = () => {
                     onChange={setInputValue}
                 />
                 <div className={styles.countLayout}>
-                    <span className={styles.count}>Found characters: {foundCount}</span>
+                    <span className={styles.count}>
+                        Found characters: {foundCount}
+                    </span>
                 </div>
             </div>
             <main>
-                {isEmpty
-                    ? <p className={styles.nothing}>Nothing found</p>
-                    : <Cards cards={cards} isLoading={loading} />
-                }
+                {isEmpty ? (
+                    <p className={styles.nothing}>Nothing found</p>
+                ) : (
+                    <Cards cards={cards} isLoading={loading} />
+                )}
             </main>
         </div>
     );

@@ -1,4 +1,4 @@
-import styles from "./Input.module.css"
+import styles from "./Input.module.css";
 
 interface IInputProps {
     value: string;
@@ -7,7 +7,7 @@ interface IInputProps {
 }
 
 export const Input: React.FC<IInputProps> = ({
-    value,  
+    value,
     onChange,
     placeholder,
 }) => {
@@ -21,4 +21,3 @@ export const Input: React.FC<IInputProps> = ({
         ></input>
     );
 };
-    
