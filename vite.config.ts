@@ -18,4 +18,5 @@ export default defineConfig({
             api: "/src/api",
         },
     },
+    base: "/Rick-and-morty/"
 });
