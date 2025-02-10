@@ -1,11 +1,8 @@
 import classNames from "classnames";
 import styles from "./Card.module.css";
+import { ICharter } from "api/RickAndMorti";
 
-interface ICardProps {
-    name: string;
-    url: string;
-    isAlive: boolean;
-    createdAt: string;
+interface ICardProps extends ICharter {
     className?: string;
 }
 

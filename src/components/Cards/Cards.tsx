@@ -1,16 +1,10 @@
 import { Card } from "components/Card";
 import { SkeletonCard } from "components/SkeletonCard";
+import type { ICharter } from "api/RickAndMorti";
 import styles from "./Cards.module.css";
 
-interface ICard {
-    url: string;
-    name: string;
-    isAlive: boolean;
-    createdAt: string;
-}
-
 interface ICardsProps {
-    cards: ICard[];
+    cards: ICharter[];
     isLoading: boolean;
 }
 
@@ -35,30 +29,35 @@ export const Cards: React.FC<ICardsProps> = ({ cards, isLoading }) => {
     return isLoading ? (
         loadingComponent()
     ) : (
-        <div>
-            <ul className={styles.cardsListFirst}>
-                {cards.slice(0, 2).map((card) => (
-                    <Card
-                        key={card.name}
-                        {...card}
-                        className={`${styles.cardListItem} ${styles.cardListItem1}`}
-                    />
-                ))}
-            </ul>
+            cards.length
+                ?
+                <div>
+                    <ul className={styles.cardsListFirst}>
+                        {cards.slice(0, 2).map((card) => (
+                            <Card
+                                key={card.id}
+                                {...card}
+                                className={`${styles.cardListItem} ${styles.cardListItem1}`}
+                            />
+                        ))}
+                    </ul>
 
-            <ul className={styles.cardsListSecond}>
-                {cards.slice(2, 8).map((card) => (
-                    <Card
-                        key={card.name}
-                        {...card}
-                        className={`${styles.cardListItem} ${
-                            card.isAlive
-                                ? styles.cardListItem1
-                                : styles.cardListItem2
-                        }`}
-                    />
-                ))}
-            </ul>
-        </div>
+                    <ul className={styles.cardsListSecond}>
+                        {cards.slice(2).map((card) => (
+                            <Card
+                                key={card.id}
+                                {...card}
+                                className={`${styles.cardListItem} ${card.isAlive
+                                        ? styles.cardListItem1
+                                        : styles.cardListItem2
+                                    }`}
+                            />
+                        ))}
+                    </ul>
+                </div>
+                :
+                <div className={styles.notFound}>
+                    <span>Not found</span>
+                </div>
     );
 };

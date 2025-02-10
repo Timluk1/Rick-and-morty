@@ -31,6 +31,10 @@
     padding-left: 39px;
 }
 
-.nothing {
-    text-align: center;
+.main {
+    margin-bottom: 20px;
+}
+
+.pagination {
+    margin-bottom: 40px;
 }
