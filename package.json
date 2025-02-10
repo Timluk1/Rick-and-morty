@@ -1,6 +1,7 @@
 {
     "name": "rick-morti",
     "private": true,
+    "homepage": "https://Timluk1.github.io/Rick-and-morty/",
     "version": "0.0.0",
     "type": "module",
     "scripts": {
