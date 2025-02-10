@@ -21,7 +21,7 @@ const defaultResponse: ICharterResponse = {
     results: [],
 };
 
-export const useCharts = (page: number): IUseCharts => {
+export const useCharts = (page: number, setPage: (newPage: number) => void): IUseCharts => {
     const [inputValue, setInputValue] = useState<string>("");
     const [response, setResponse] = useState<ICharterResponse>(defaultResponse);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -53,6 +53,10 @@ export const useCharts = (page: number): IUseCharts => {
         }
     }, [inputValue, page]);
 
+    const onChangeInput = (newInput: string) => {
+        setPage(1);
+        setInputValue(newInput);
+    }
     const charters = response.results;
     const pages = response.info.pages;
     const foundCount = response.info.count;
@@ -63,6 +67,6 @@ export const useCharts = (page: number): IUseCharts => {
         foundCount,
         inputValue,
         isLoading,
-        setInputValue,
+        setInputValue: onChangeInput,
     };
 };

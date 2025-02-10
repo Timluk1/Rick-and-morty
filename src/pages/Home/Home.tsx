@@ -7,12 +7,13 @@ import styles from "./Home.module.css";
 
 export const Home = () => {
     const [page, setPage] = useState<number>(1);
-    const { isLoading, charters, inputValue, setInputValue, foundCount, pages } = useCharts(page);
-    
+    const { isLoading, charters, inputValue, setInputValue, foundCount, pages } = useCharts(page, setPage);
+
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
+        window.scrollTo(0, 0);
     };
-    
+
     return (
         <div className={styles.home}>
             <div className={styles.inputPLaceholder}>
@@ -32,12 +33,11 @@ export const Home = () => {
             </main>
             {
                 pages > 1
-                ?
-                    <Pagination className={styles.pagination} page={page} count={pages} color="primary" onChange={handleChange}/>
-                :
-                null
+                    ?
+                    <Pagination className={styles.pagination} page={page} count={pages} color="primary" onChange={handleChange} />
+                    :
+                    null
             }
-
         </div>
     );
 };
