@@ -9,7 +9,7 @@ export const Home = () => {
     const [page, setPage] = useState<number>(1);
     const { isLoading, charters, inputValue, setInputValue, foundCount, pages } = useCharts(page, setPage);
 
-    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
         window.scrollTo(0, 0);
     };
