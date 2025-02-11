@@ -9,6 +9,7 @@ interface ICardsProps {
 }
 
 export const Cards: React.FC<ICardsProps> = ({ cards, isLoading }) => {
+    console.log(cards)
     const loadingComponent = () => {
         return (
             <div>
@@ -47,7 +48,7 @@ export const Cards: React.FC<ICardsProps> = ({ cards, isLoading }) => {
                             <Card
                                 key={card.id}
                                 {...card}
-                                className={`${styles.cardListItem} ${card.isAlive
+                                className={`${styles.cardListItem} ${card.status === "Alive"
                                         ? styles.cardListItem1
                                         : styles.cardListItem2
                                     }`}

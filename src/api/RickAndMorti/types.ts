@@ -3,7 +3,7 @@ export interface ICharter {
     name: string;
     url: string;
     pages: number;
-    isAlive: boolean;
+    status: string;
     createdAt: string;
 }
 

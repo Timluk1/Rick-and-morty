@@ -9,7 +9,7 @@ interface ICardProps extends ICharter {
 export const Card: React.FC<ICardProps> = ({
     url,
     name,
-    isAlive,
+    status,
     createdAt,
     className,
 }) => {
@@ -24,10 +24,10 @@ export const Card: React.FC<ICardProps> = ({
                         Status{" "}
                         <span
                             className={
-                                isAlive ? styles.statusAlive : styles.statusDead
+                                status === "Alive" ? styles.statusAlive : styles.statusDead
                             }
                         >
-                            {isAlive ? "Alive" : "Dead"}
+                            {status}
                         </span>
                     </p>
                     <p className={styles.cardCreatedAt}>
